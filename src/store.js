@@ -4,7 +4,7 @@ import useLocalStorage from './hooks/useLocalStorage'
 const [load, save] = useLocalStorage()
 
 const initialState = {
-	searchText: 'zombieland',
+	searchText: '',
 	activePage: 1,
 	totalPages: 0,
 	movies: [],
@@ -42,7 +42,9 @@ const reducer = (state, { type, payload }) => {
 				favourites: favs,
 			}
 		case 'REMOVE_FAVOURITE':
-			const favsWithoutRemoved = state.favourites.filter(f => f.id !== payload)
+			const favsWithoutRemoved = state.favourites.filter(
+				f => f.imdbID !== payload
+			)
 			save('favs', favsWithoutRemoved)
 			return {
 				...state,

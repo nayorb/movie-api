@@ -10,9 +10,12 @@ import MovieSearchPage from './pages/MovieSearchPage'
 import FavouriteMoviesPage from './pages/FavouriteMoviesPage'
 import MovieDetailPage from './pages/MovieDetailPage'
 
+import CssBaseline from '@material-ui/core/CssBaseline'
+
 function App() {
 	return (
 		<Provider store={store}>
+			<CssBaseline />
 			<Router>
 				<div className='App'>
 					<Nav />

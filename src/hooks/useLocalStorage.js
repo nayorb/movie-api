@@ -5,7 +5,6 @@ const useLocalStorage = () => {
 
 	const save = (key, payload) => {
 		localStorage.setItem(key, JSON.stringify(payload))
-		console.log(key, load(key))
 	}
 
 	return [load, save]
