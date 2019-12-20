@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,EACC,oBACD,CAEA,GACC,eACD,CAEA,WACC,aACD,CAEA,iBAEC,aACD","file":"main.38be9d5c.chunk.css","sourcesContent":["a {\n\ttext-decoration: none;\n}\n\nul {\n\tlist-style: none;\n}\n\n.list-item {\n\tcolor: #323232;\n}\n\n.list-item:hover {\n\t/* background-color: #323232; */\n\tcolor: #3f51b5;\n}\n"]}
