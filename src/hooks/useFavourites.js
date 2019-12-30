@@ -1,5 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { removeFavouriteAction, addFavouriteAction } from '../store'
+import {
+	removeFavouriteAction,
+	addFavouriteAction,
+} from '../actions/favourites'
 
 const useFavourites = () => {
 	const favourites = useSelector(state => state.favourites)

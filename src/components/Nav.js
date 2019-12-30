@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import COLORS from '../constants/colors'
-
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'

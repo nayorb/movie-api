@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom'
 
 export default function MovieSearchPage() {
 	const [searchText, setSearchText] = useState('')
-	const movies = useSelector(state => state.movies)
+	const movies = useSelector(state => state.movies.movies)
 
 	const { isInFavourites } = useFavourites()
 

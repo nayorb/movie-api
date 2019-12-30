@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import API from '../constants/api'
+import React, { useEffect } from 'react'
+
 import useFavourites from '../hooks/useFavourites'
-import useFetch from '../hooks/useFetch'
 
 import COLORS from '../constants/colors'
 
@@ -14,24 +13,25 @@ import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Bold = ({ children }) => (
 	<span style={{ fontWeight: 'bold' }}>{children}</span>
 )
 
 export default function MovieDetailPage({ match, history }) {
-	const [movie, setMovie] = useState(null)
+	const movie = useSelector(state => state.movies.selectedMovie)
+	const dispatch = useDispatch()
 	const { addFavourite, isInFavourites, removeFavourite } = useFavourites()
-	const fetchData = useFetch()
 
 	useEffect(() => {
-		fetchData('http://www.omdbapi.com/', {
-			apikey: API.API_KEY,
-			i: match.params.id,
-		}).then(data => {
-			setMovie(data)
+		dispatch({
+			type: 'MOVIE_FETCH_REQUESTED',
+			payload: {
+				id: match.params.id,
+			},
 		})
-	})
+	}, [match.params.id])
 
 	const starClicked = () => {
 		if (movie && isInFavourites(movie.imdbID)) {
@@ -73,13 +73,13 @@ export default function MovieDetailPage({ match, history }) {
 						</Typography>
 					</CardContent>
 					<CardContent>
-						<Typography paragraph>
+						<div>
 							<Typography>{movie.Genre}</Typography>
 							<Typography>
 								{movie.Country} / {movie.Year} / {movie.Runtime}
 							</Typography>
-						</Typography>
-						<Typography paragraph>
+						</div>
+						<div>
 							<Typography>
 								<Bold>Director:</Bold> {movie.Director}
 							</Typography>
@@ -92,7 +92,7 @@ export default function MovieDetailPage({ match, history }) {
 							<Typography>
 								<Bold>Earnings:</Bold> {movie.BoxOffice}
 							</Typography>
-						</Typography>
+						</div>
 					</CardContent>
 				</Card>
 			) : null}
