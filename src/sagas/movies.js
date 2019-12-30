@@ -3,6 +3,7 @@ import { fetchMovieDetails, fetchMovies } from '../Api'
 
 function* getMovieDetails(action) {
 	try {
+		yield put({ type: 'SET_SELECTED_MOVIE', payload: null })
 		const data = yield call(fetchMovieDetails, {
 			id: action.payload.id,
 		})
